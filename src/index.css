@@ -10,18 +10,19 @@
 }
 
 .window-mask {
-    mask-image: linear-gradient(black, black), url("./assets/window.svg");
+    mask-image: linear-gradient(black, black), url("./assets/window-mobile.svg");
     mask-composite: exclude;
     mask-repeat: no-repeat;
     /* Use calc() for dynamic mask-size based on viewport height */
-    mask-size: auto, calc(20vh + 2rem); /* Base size + responsive adjustment */
+    mask-size: auto, calc(25vh + 2rem); /* Base size + responsive adjustment */
     mask-position:
         center center,
-        center bottom 30vh;
+        bottom 35vh center;
 }
 
 @media (min-width: theme("screens.lg")) {
     .window-mask {
+        mask-image: linear-gradient(black, black), url("./assets/window.svg");
         mask-size: auto, calc(25vh + 3rem); /* Adjust base size and offset for larger screens */
         mask-position:
             center center,
@@ -31,6 +32,7 @@
 
 @media (min-width: theme("screens.xl")) {
     .window-mask {
+        mask-image: linear-gradient(black, black), url("./assets/window.svg");
         mask-size: auto, calc(30vh + 3rem); /* Adjust base size and offset for larger screens */
         mask-position:
             center center,
