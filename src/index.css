@@ -8,3 +8,32 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.window-mask {
+    mask-image: linear-gradient(black, black), url("./assets/window.svg");
+    mask-composite: exclude;
+    mask-repeat: no-repeat;
+    /* Use calc() for dynamic mask-size based on viewport height */
+    mask-size: auto, calc(20vh + 2rem); /* Base size + responsive adjustment */
+    mask-position:
+        center center,
+        center bottom 30vh;
+}
+
+@media (min-width: theme("screens.lg")) {
+    .window-mask {
+        mask-size: auto, calc(25vh + 3rem); /* Adjust base size and offset for larger screens */
+        mask-position:
+            center center,
+            top 8rem right 5rem;
+    }
+}
+
+@media (min-width: theme("screens.xl")) {
+    .window-mask {
+        mask-size: auto, calc(30vh + 3rem); /* Adjust base size and offset for larger screens */
+        mask-position:
+            center center,
+            top 10rem right 9rem;
+    }
+}
