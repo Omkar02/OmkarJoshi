@@ -3,10 +3,7 @@ import { FaArrowRight } from "react-icons/fa6";
 export default function Header({ className = "" }) {
     return (
         <header className={`${className} flex items-center justify-between`}>
-            <h1
-                className="font-zenDots text-lg italic 
-                text-lime-400 sm:text-2xl lg:text-3xl"
-            >
+            <h1 className="font-zenDots medium-text italic text-lime-400 ">
                 Omkar J
             </h1>
             <button
