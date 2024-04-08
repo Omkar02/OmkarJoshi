@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .two-extra-large-text {
+        @apply text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl;
+    }
+
+    .extra-large-text {
+        @apply text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+    }
+
+    .large-text {
+        @apply text-base sm:text-xl md:text-2xl lg:text-3xl;
+    }
+
+    .medium-text {
+        @apply text-lg sm:text-xl lg:text-2xl;
+    }
+}
+
 @font-face {
     font-family: "zenDots";
     src: url("./assets/fonts/ZenDots-Regular.ttf") format("truetype");
@@ -17,7 +35,7 @@
     mask-size: auto, calc(25vh + 2rem); /* Base size + responsive adjustment */
     mask-position:
         center center,
-        bottom 35vh center;
+        bottom 40% center;
 }
 
 @media (min-width: theme("screens.lg")) {
