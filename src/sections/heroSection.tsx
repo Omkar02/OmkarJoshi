@@ -3,11 +3,9 @@ import Footer from "./footer";
 import Header from "./header";
 import {
     motion,
-    MotionValue,
     useMotionTemplate,
     useMotionValueEvent,
     useScroll,
-    useSpring,
     useTransform,
 } from "framer-motion";
 import AboutPage from "./aboutPage";
@@ -76,15 +74,10 @@ export default function HeroSection() {
         offset: ["start start", "center center"],
     });
 
-    const scrollYprocessSpring = useSpring(scrollYProgress, {
-        stiffness: 300,
-        damping: 40,
-    }) as MotionValue<number>;
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 12]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
-    const scale = useTransform(scrollYprocessSpring, [0, 1], [1, 12]);
-    const opacity = useTransform(scrollYprocessSpring, [0, 1], [1, 0]);
-
-    const imageX = useTransform(scrollYprocessSpring, [0, 1], [getWidth(), 0]);
+    const imageX = useTransform(scrollYProgress, [0, 1], [getWidth(), 0]);
     const imageXCalc = useMotionTemplate`max(0px, calc(${imageX}% + calc(${imageX}vw - 300px)))`;
 
     useMotionValueEvent(opacity, "change", (latest) => {
@@ -103,7 +96,11 @@ export default function HeroSection() {
             >
                 <motion.div
                     style={{ scale, opacity: opacity }}
-                    transition={{ ease: "easeInOut" }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 40,
+                    }}
                     className="left-0 top-0 h-dvh
                     origin-[50%_50%] lg:origin-[90%_40%]"
                 >
