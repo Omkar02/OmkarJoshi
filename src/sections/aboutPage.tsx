@@ -1,48 +1,52 @@
 import { MotionValue, motion, useScroll } from "framer-motion";
-import AnimatedSentence from "../components/animetedSentence";
+import { AnimatedHeader } from "../components/onScrollAnimation";
 import { useRef } from "react";
-import { AboutSectionText } from "../text/aboutSection";
+import AboutSectionText from "../content/aboutSection";
 interface AboutPageInterface {
     imageXCalc: MotionValue<string>;
 }
+
+const getOffset = () => {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 640) return "start start";
+    return "-30% -30%";
+};
 
 export default function AboutPage({ imageXCalc }: AboutPageInterface) {
     const banner = useRef(null);
     const { scrollYProgress } = useScroll({
         target: banner,
-        offset: ["start start", "center center"],
+        offset: [getOffset(), "center center"],
     });
     return (
         <>
             <section
                 ref={banner}
-                className="mt-[-200vh] h-[200vh] overflow-clip bg-zinc-900"
+                className="mt-[-200vh] h-fit overflow-clip bg-zinc-900 md:h-[200vh]"
             >
                 <motion.span
                     style={{ x: imageXCalc }}
-                    transition={{ ease: "easeInOut" }}
-                    className="sticky top-1/2 mx-auto 
-                block aspect-video h-fit 
-                w-[1200px] max-w-[90%] rounded-3xl 
-                p-5 md:top-1/4 lg:top-[20%]"
+                    className="sticky mx-auto mt-[50vh] block w-full
+                    rounded-3xl p-5 md:top-1/4 md:mt-[50vh]
+                    lg:top-[20%] lg:mt-[0vh] lg:max-w-6xl"
                 >
                     <h1 className="extra-large-text font-serif text-white">
-                        <AnimatedSentence
+                        <AnimatedHeader
                             sentence={"My Coding Odyssey"}
                             scrollY={scrollYProgress}
                         />
                     </h1>
-                    <div className="medium-text my-2 font-serif text-lime-300 lg:my-5">
-                        {AboutSectionText}
+                    <div className="medium-text my-2 font-serif text-zinc-100 lg:my-5">
+                        <AboutSectionText scrollYProgress={scrollYProgress} />
                         {/* // TODO Below does not works as it causes the hone website to slow down.... */}
-                        {/* <AnimatedSentence
+                        {/* <AnimatedHeader
                             sentence={AboutSectionText}
                             scrollY={scrollYProgress}
                         /> */}
                     </div>
                 </motion.span>
             </section>
-            <div className="space-y-[80px] overflow-clip bg-lime-300 text-7xl md:text-[300px]">
+            <div className="space-y-[80px] overflow-clip bg-lime-200 text-7xl md:text-[300px]">
                 <p>Some more content</p>
                 <p>So there's</p>
                 <p>Some room</p>
