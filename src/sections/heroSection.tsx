@@ -1,15 +1,16 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Footer from "./footer";
-import About from "./aboutPage";
 import Header from "./header";
 import {
     motion,
     MotionValue,
     useMotionTemplate,
+    useMotionValueEvent,
     useScroll,
     useSpring,
     useTransform,
 } from "framer-motion";
+import AboutPage from "./aboutPage";
 
 // interface windowInterface {
 //     ref: React.MutableRefObject<null>;
@@ -69,6 +70,7 @@ function getWidth() {
 
 export default function HeroSection() {
     const ref = useRef(null);
+    const [isHidden, setIsHidden] = useState(false);
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "center center"],
@@ -80,17 +82,29 @@ export default function HeroSection() {
     }) as MotionValue<number>;
 
     const scale = useTransform(scrollYprocessSpring, [0, 1], [1, 12]);
+    const opacity = useTransform(scrollYprocessSpring, [0, 1], [1, 0]);
 
     const imageX = useTransform(scrollYprocessSpring, [0, 1], [getWidth(), 0]);
     const imageXCalc = useMotionTemplate`max(0px, calc(${imageX}% + calc(${imageX}vw - 300px)))`;
 
+    useMotionValueEvent(opacity, "change", (latest) => {
+        /**
+         * * This used for tracking opacity and update isHidden
+         * * so to make mouse avaliable on bottom page also
+         */
+        latest === 0 ? setIsHidden(true) : setIsHidden(false);
+    });
+
     return (
         <>
-            <div ref={ref} className="relative z-10 h-[200vh]  overflow-clip">
+            <div
+                ref={ref}
+                className={`relative z-10 h-[200vh] overflow-clip ${isHidden ? "pointer-events-none" : ""}`}
+            >
                 <motion.div
-                    style={{ scale }}
+                    style={{ scale, opacity: opacity }}
                     transition={{ ease: "easeInOut" }}
-                    className="left-0 top-0 h-dvh 
+                    className="left-0 top-0 h-dvh
                     origin-[50%_50%] lg:origin-[90%_40%]"
                 >
                     <div className="window-mask absolute -z-20 h-dvh w-full bg-zinc-900"></div>
@@ -106,7 +120,7 @@ export default function HeroSection() {
                 </motion.div>
             </div>
 
-            <About imageXCalc={imageXCalc} />
+            <AboutPage imageXCalc={imageXCalc} />
         </>
     );
 }
