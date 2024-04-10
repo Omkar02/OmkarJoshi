@@ -1,7 +1,9 @@
-// import { useState } from 'react'
+import HeroSection from "./sections/heroSection";
 
 export default function App() {
-  // const [count, setCount] = useState(0)
-
-  return <h1 className="">hello World</h1>;
+    return (
+        <main className="bg-zinc-900">
+            <HeroSection />
+        </main>
+    );
 }
