@@ -18,6 +18,14 @@
     .medium-text {
         @apply text-lg sm:text-xl lg:text-2xl;
     }
+
+    em {
+        @apply italic text-lime-200;
+    }
+
+    .link {
+        @apply cursor-pointer text-blue-200 underline;
+    }
 }
 
 @font-face {
