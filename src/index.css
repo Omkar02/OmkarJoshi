@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+    .icon-size {
+        @apply se:text-[4.5rem] text-[6rem] sm:text-[7rem] md:text-[8rem] lg:text-[11rem] xl:text-[12rem];
+    }
     .two-extra-large-text {
         @apply text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl;
     }

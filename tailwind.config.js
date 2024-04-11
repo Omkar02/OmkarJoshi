@@ -11,6 +11,9 @@ export default {
                 // Simple 16 row grid
                 13: "repeat(13, minmax(0, 1fr))",
             },
+            screens: {
+                se: { min: "300px", max: "380px" },
+            },
         },
     },
     plugins: [],

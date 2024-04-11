@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Footer from "./footer";
 import Header from "./header";
 import {
@@ -87,37 +87,40 @@ export default function HeroSection() {
          */
         latest === 0 ? setIsHidden(true) : setIsHidden(false);
     });
-
-    return (
-        <>
-            <div
-                ref={ref}
-                className={`relative z-10 h-[200vh] overflow-clip ${isHidden ? "pointer-events-none" : ""}`}
-            >
-                <motion.div
-                    style={{ scale, opacity: opacity }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 40,
-                    }}
-                    className="left-0 top-0 h-dvh
-                    origin-[50%_50%] lg:origin-[90%_40%]"
+    const _memoHeroSection = useMemo(() => {
+        return (
+            <>
+                <div
+                    ref={ref}
+                    className={`relative z-10 h-[200vh] overflow-clip ${isHidden ? "pointer-events-none" : ""}`}
                 >
-                    <div className="window-mask absolute -z-20 h-dvh w-full bg-zinc-900"></div>
-                    <div className="window-mask">
-                        <section className="grid-rows-13 mx-2 grid h-dvh md:mx-5 lg:mx-8">
-                            <Header className="row-span-1" />
-                            <main className="row-span-8 rounded-3xl bg-zinc-100 shadow-inner lg:row-span-9">
-                                <Hero />
-                            </main>
-                            <Footer className="row-span-4 lg:row-span-3" />
-                        </section>
-                    </div>
-                </motion.div>
-            </div>
+                    <motion.div
+                        style={{ scale, opacity: opacity }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 40,
+                            bounce: 200,
+                        }}
+                        className="left-0 top-0 h-dvh
+                        origin-[50%_50%] lg:origin-[90%_40%]"
+                    >
+                        <div className="window-mask absolute -z-20 h-dvh w-full bg-zinc-900"></div>
+                        <div className="window-mask">
+                            <section className="grid-rows-13 mx-2 grid h-dvh md:mx-5 lg:mx-8">
+                                <Header className="row-span-1" />
+                                <main className="row-span-8 rounded-3xl bg-zinc-100 shadow-inner lg:row-span-9">
+                                    <Hero />
+                                </main>
+                                <Footer className="row-span-4 lg:row-span-3" />
+                            </section>
+                        </div>
+                    </motion.div>
+                </div>
 
-            <AboutPage imageXCalc={imageXCalc} />
-        </>
-    );
+                <AboutPage imageXCalc={imageXCalc} />
+            </>
+        );
+    }, [imageXCalc, isHidden, opacity, scale]);
+    return _memoHeroSection;
 }
