@@ -8,7 +8,7 @@ export default function WorkHistorySection() {
     const x = useTransform(scrollYProgress, [0, 1], ["5%", "-80%"]);
     return (
         <section ref={targetRef}>
-            <div className="cube-grid h-[300dvh] space-y-[80px] overflow-clip bg-zinc-200 text-7xl md:text-[300px]">
+            <div className="cube-grid h-[400dvh] space-y-[80px] overflow-clip bg-zinc-200 text-7xl md:text-[300px]">
                 <div className="sticky top-0 flex h-screen items-center overflow-hidden">
                     <motion.div style={{ x }} className="flex gap-4">
                         {cards.map((card) => {
