@@ -73,7 +73,6 @@ export default function HeroSection() {
         target: ref,
         offset: ["start start", "center center"],
     });
-
     const scale = useTransform(scrollYProgress, [0, 1], [1, 12]);
     const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
@@ -107,9 +106,12 @@ export default function HeroSection() {
                     >
                         <div className="window-mask absolute -z-20 h-dvh w-full bg-zinc-900"></div>
                         <div className="window-mask">
-                            <section className="grid-rows-13 mx-2 grid h-dvh md:mx-5 lg:mx-8">
+                            <section className="mx-2 grid h-dvh grid-rows-13 md:mx-5 lg:mx-8">
                                 <Header className="row-span-1" />
-                                <main className="row-span-8 rounded-3xl bg-zinc-100 shadow-inner lg:row-span-9">
+                                <main
+                                    className="row-span-8 rounded-3xl bg-zinc-100 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]
+                                shadow-inner lg:row-span-9"
+                                >
                                     <Hero />
                                 </main>
                                 <Footer className="row-span-4 lg:row-span-3" />

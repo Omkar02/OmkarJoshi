@@ -11,7 +11,7 @@ export default function InfiniteSlide({ children }: InfiniteSlideInterface) {
     const xTranslation = useMotionValue(0);
 
     useEffect(() => {
-        const duration = 20; // Animation duration in seconds
+        const duration = 25; // Animation duration in seconds
         const finalPosition = -width / 2 - 12;
 
         animate(xTranslation, [0, finalPosition], {
