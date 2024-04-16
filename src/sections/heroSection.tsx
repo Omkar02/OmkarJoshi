@@ -108,10 +108,7 @@ export default function HeroSection() {
                         <div className="window-mask">
                             <section className="mx-2 grid h-dvh grid-rows-13 md:mx-5 lg:mx-8">
                                 <Header className="row-span-1" />
-                                <main
-                                    className="row-span-8 rounded-3xl bg-zinc-100 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]
-                                shadow-inner lg:row-span-9"
-                                >
+                                <main className="cube-grid row-span-8 rounded-3xl bg-zinc-100 shadow-inner lg:row-span-9">
                                     <Hero />
                                 </main>
                                 <Footer className="row-span-4 lg:row-span-3" />

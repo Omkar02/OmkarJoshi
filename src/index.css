@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @layer components {
+    .cube-grid {
+        @apply bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px];
+    }
     .icon-size {
-        @apply se:text-[4.5rem] text-[6rem] sm:text-[7rem] md:text-[8rem] lg:text-[11rem] xl:text-[12rem];
+        @apply text-[6rem] sm:text-[7rem] md:text-[8rem] lg:text-[11rem] xl:text-[12rem] se:text-[4.5rem];
     }
     .two-extra-large-text {
         @apply text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl;
