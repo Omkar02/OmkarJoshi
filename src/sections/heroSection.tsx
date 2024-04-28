@@ -37,7 +37,10 @@ function Hero() {
                 lg:flex-row lg:justify-around lg:text-left"
             >
                 <div className="mx-5 grid sm:gap-2 lg:max-w-4xl">
-                    <p className="medium-text text-zinc-400">
+                    <p
+                        className="medium-text highlight-green rounded-full border border-black
+                         px-2 font-mono font-black opacity-80 shadow-inner shadow-white lg:w-fit"
+                    >
                         Full Stack Developer
                     </p>
                     <h1 className="two-extra-large-text">

@@ -4,6 +4,15 @@ export default {
 
     theme: {
         extend: {
+            animation: {
+                "infinite-scroll": "infinite-scroll 20s linear infinite",
+            },
+            keyframes: {
+                "infinite-scroll": {
+                    from: { transform: "translateX(0)" },
+                    to: { transform: "translateX(-100%)" },
+                },
+            },
             fontFamily: {
                 zenDots: ["zenDots", "sans-serif"],
             },
@@ -12,7 +21,7 @@ export default {
                 13: "repeat(13, minmax(0, 1fr))",
             },
             screens: {
-                se: { min: "300px", max: "380px" },
+                se: "390px",
             },
         },
     },

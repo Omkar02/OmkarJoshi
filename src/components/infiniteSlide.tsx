@@ -1,44 +1,25 @@
-import { ReactElement, useEffect, useMemo } from "react";
-import { animate, motion, useMotionValue } from "framer-motion";
-import useMeasure from "react-use-measure";
+import { ReactElement, useMemo } from "react";
 
 interface InfiniteSlideInterface {
     children: ReactElement[];
 }
 
 export default function InfiniteSlide({ children }: InfiniteSlideInterface) {
-    const [ref, { width }] = useMeasure();
-    const xTranslation = useMotionValue(0);
-
-    useEffect(() => {
-        const duration = 25; // Animation duration in seconds
-        const finalPosition = -width / 2 - 12;
-
-        animate(xTranslation, [0, finalPosition], {
-            ease: "linear",
-            duration: duration,
-            repeat: Infinity,
-            repeatType: "loop",
-            repeatDelay: 0,
-        });
-    }, [xTranslation, width]);
-
     const _memoComponent = useMemo(() => {
         return (
             <div
-                className={`overflow-hidden
-              [mask-image:_linear-gradient(to_right,transparent_0,_black_38px,_black_calc(100%-38px),transparent_100%)]
-              lg:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]`}
+                className={`inline-flex w-full flex-nowrap overflow-hidden 
+                [mask-image:_linear-gradient(to_right,transparent_0,_black_38px,_black_calc(100%-38px),transparent_100%)]
+                lg:[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]`}
             >
-                <motion.ul
-                    ref={ref}
-                    className="left-0 flex gap-4"
-                    style={{ x: xTranslation }}
-                >
+                <ul className="animate-infinite-scroll flex items-center justify-center md:justify-start [&_li]:mx-1 [&_li]:w-max">
                     {children}
-                </motion.ul>
+                </ul>
+                <ul className=" animate-infinite-scroll flex items-center justify-center md:justify-start [&_li]:mx-1 [&_li]:w-max">
+                    {children}
+                </ul>
             </div>
         );
-    }, [children, ref, xTranslation]);
+    }, [children]);
     return _memoComponent;
 }

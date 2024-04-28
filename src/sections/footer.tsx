@@ -41,7 +41,7 @@ export default function Footer({ className = "" }) {
                 border border-lime-300 bg-zinc-900 text-center text-lime-300 lg:col-span-7`}
             >
                 <InfiniteSlide>
-                    {[...logos, ...logos].map((logo, idx) => (
+                    {logos.map((logo, idx) => (
                         <li
                             key={idx}
                             className="flex items-center rounded-3xl border-2"

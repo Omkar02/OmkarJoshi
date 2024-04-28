@@ -6,7 +6,8 @@ const E_YANTRA_LINK =
 const CLOUDLOCK =
     "https://www.cisco.com/c/en_in/products/security/cloudlock/index.html";
 const CSPM = "https://www.netskope.com/products/public-cloud-security";
-const SPM = "https://www.netskope.com/products/next-gen-swg";
+const SPM =
+    "https://www.netskope.com/products/saas-security-posture-management";
 
 interface AboutSectionTextInterface {
     scrollYProgress: MotionValue;
@@ -31,12 +32,13 @@ export default function AboutSectionText({
                     wasn't a single month I wasn't hacking away at some project
                     or another. Back then, my frontend toolkit was a trusty
                     trio: HTML, CSS, and{" "}
-                    <em className="!text-rose-200">jQuery (Never liked it!)</em>
-                    .{" "}
-                    <em>
-                        On the backend, Python was my Excalibur - powerful and
-                        versatile (though with a steeper learning curve!).
+                    <em className="highlight-red">
+                        jQuery/PHP (Never liked jQuery/PHP!)
                     </em>
+                    . On the backend,{" "}
+                    <em className="highlight-green">
+                        Python was & is my Excalibur
+                    </em>{" "}
                 </>
             </AmimatedPara>
             {/* ------------------------------------------------------------- */}
@@ -47,13 +49,11 @@ export default function AboutSectionText({
                 className="mt-5 md:mt-8 lg:mt-10"
             >
                 <>
-                    <em>
-                        Then, React.js & Tailwind.css entered the scene, and it
-                        was love at first sight (second only to Python, of
-                        course)
+                    Then, React.js & Tailwind.css entered the scene, and it was
+                    love at first sight (second only to Python, of course).{" "}
+                    <em className="highlight-green">
+                        React became my new Excalibur.
                     </em>
-                    . React became my frontend equivalent of Python - a
-                    problem-solving powerhouse.
                 </>
             </AmimatedPara>
             {/* ------------------------------------------------------------- */}
@@ -64,19 +64,20 @@ export default function AboutSectionText({
                 className="mt-5 md:mt-8 lg:mt-10"
             >
                 <>
-                    My coding prowess wasn't limited to building cool stuff.{" "}
-                    <em>
-                        I even snagged the prestigious title of{" "}
-                        <a
-                            href={E_YANTRA_LINK}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="link"
-                        >
-                            Best Algorithm Designer at IIT Bombay's E-Yantra
-                        </a>{" "}
+                    My coding prowess wasn't limited to building cool stuff. I
+                    even snagged the prestigious title of{" "}
+                    <em className="highlight-green">
+                        Best Algorithm Designer at IIT Bombay's E-Yantra
                         competition!
-                    </em>
+                    </em>{" "}
+                    <a
+                        href={E_YANTRA_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link"
+                    >
+                        Here
+                    </a>{" "}
                 </>
             </AmimatedPara>
             {/* ------------------------------------------------------------- */}
@@ -88,12 +89,12 @@ export default function AboutSectionText({
             >
                 <>
                     Forward to my first job - a Python backend engineer role at
-                    Accenture.{" "}
-                    <em>
-                        While Python was my bread and butter, my React crush
-                        persisted. I channeled it into side projects and even
+                    Accenture. While Python was my bread and butter, my React
+                    crush persisted.{" "}
+                    <em className="highlight-green">
+                        I channeled this passion into side projects and even
                         managed to snag a few internal React projects, building
-                        dashboards for both the company and clients.
+                        dashboards for the team.
                     </em>
                 </>
             </AmimatedPara>
@@ -115,8 +116,11 @@ export default function AboutSectionText({
                     >
                         Cisco Cloudlock
                     </a>
-                    , it was strictly backend territory. I missed the
-                    interactivity of frontend development.
+                    , it was strictly backend territory.{" "}
+                    <em className="highlight-red">
+                        {" "}
+                        I missed the interactivity of frontend development.
+                    </em>
                 </>
             </AmimatedPara>
             {/* ------------------------------------------------------------- */}
@@ -128,43 +132,44 @@ export default function AboutSectionText({
             >
                 <>
                     Then came Netskope - the turning point! After a year of
-                    Python and no React, I landed my dream role.{" "}
-                    <em>
-                        For eight months, I built scalable backend architecture
-                        handling a whopping 50 million requests daily for{" "}
-                        <a
-                            href={CSPM}
-                            className="link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Public Cloud Security
-                        </a>{" "}
+                    Python and no React, I landed my dream role. For eight
+                    months,{" "}
+                    <em className="highlight-green">
+                        I built scalable backend architecture handling a
+                        whopping 50 million requests daily for
+                    </em>{" "}
+                    <a
+                        href={CSPM}
+                        className="link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Public Cloud Security.
+                    </a>
+                    <p>But the best part?</p> A smooth transition to{" "}
+                    <em className="highlight-green">
+                        full-time React developer
                     </em>
-                    . But the best part?{" "}
-                    <em className="!text-orange-300">
-                        A smooth transition to full-time React developer,
-                        crafting beautiful dashboards for Netskope's hero
-                        product, the{" "}
-                        <a
-                            href={SPM}
-                            className="link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Next Generation Secure Web Gateway
-                        </a>{" "}
-                        and{" "}
-                        <a
-                            href={CSPM}
-                            className="link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Public Cloud Security
-                        </a>
-                        .
-                    </em>
+                    , crafting beautiful dashboards for Netskope's hero product,
+                    the{" "}
+                    <a
+                        href={SPM}
+                        className="link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        SaaS Security Posture Management
+                    </a>{" "}
+                    and{" "}
+                    <a
+                        href={CSPM}
+                        className="link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Public Cloud Security
+                    </a>
+                    .
                 </>
             </AmimatedPara>
             {/* ------------------------------------------------------------- */}
@@ -177,22 +182,12 @@ export default function AboutSectionText({
                 <>
                     And when I'm not coding? Well, I fuel my creativity with
                     delicious meals and epic video game adventures.{" "}
-                    <em>Oh, and I'm a total science fiction nerd!</em>
+                    <em className="highlight-green">
+                        Oh, and I'm a total science fiction nerd!
+                    </em>
                 </>
             </AmimatedPara>
             {/* ------------------------------------------------------------- */}
-            <AmimatedPara
-                progress={scrollYProgress}
-                totalLen={totalLen}
-                curIdx={7}
-                className="mt-5 md:mt-8 lg:mt-10"
-            >
-                <>
-                    This is just a glimpse into my coding journey. It's been a
-                    whirlwind of learning, challenges, and triumphs. Here's to
-                    many more lines of code and exciting projects ahead!
-                </>
-            </AmimatedPara>
         </>
     );
 }

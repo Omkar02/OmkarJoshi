@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 @layer components {
+    .highlight-red {
+        @apply rounded-full bg-gradient-to-r from-red-500 to-orange-500 px-2 text-black;
+    }
+    .highlight-green {
+        @apply rounded-full bg-gradient-to-r from-lime-500 to-teal-400 px-2 text-black;
+    }
     .cube-grid {
         @apply bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px];
     }
     .icon-size {
-        @apply text-[6rem] sm:text-[7rem] md:text-[8rem] lg:text-[11rem] xl:text-[12rem] se:text-[4.5rem];
+        @apply text-[5rem] sm:text-[7rem] md:text-[8rem] lg:text-[11rem] xl:text-[12rem] se:text-[6rem];
     }
     .two-extra-large-text {
         @apply text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl;
@@ -18,19 +24,23 @@
     }
 
     .large-text {
-        @apply text-base sm:text-xl md:text-2xl lg:text-3xl;
+        @apply text-sm sm:text-xl md:text-2xl lg:text-3xl se:text-base;
     }
 
     .medium-text {
-        @apply text-lg sm:text-xl lg:text-2xl;
+        @apply text-sm sm:text-xl lg:text-2xl;
+    }
+
+    .body-text {
+        @apply text-sm sm:text-lg md:text-lg lg:text-2xl se:text-base;
     }
 
     em {
-        @apply italic text-lime-200;
+        @apply font-black uppercase;
     }
 
     .link {
-        @apply cursor-pointer text-blue-200 underline;
+        @apply cursor-pointer text-sky-300 underline;
     }
 }
 
