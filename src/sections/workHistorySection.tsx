@@ -18,7 +18,7 @@ export default function WorkHistorySection() {
     const x = useTransform(scrollYProgress, [0, 1], getWidth());
     return (
         <section ref={targetRef}>
-            <div className="cube-grid h-[400dvh] space-y-[80px] overflow-clip bg-stone-900">
+            <div className="cube-grid h-[400vh] space-y-[80px] overflow-clip bg-stone-900">
                 <div className="sticky top-2 flex h-screen items-center overflow-hidden lg:top-10">
                     <motion.div
                         style={{ x: x }}
