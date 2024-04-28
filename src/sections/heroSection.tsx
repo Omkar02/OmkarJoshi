@@ -1,13 +1,11 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Footer from "./footer";
 import Header from "./header";
 import {
     motion,
-    MotionValue,
     useMotionTemplate,
     useMotionValueEvent,
     useScroll,
-    useSpring,
     useTransform,
 } from "framer-motion";
 import AboutPage from "./aboutPage";
@@ -39,7 +37,10 @@ function Hero() {
                 lg:flex-row lg:justify-around lg:text-left"
             >
                 <div className="mx-5 grid sm:gap-2 lg:max-w-4xl">
-                    <p className="medium-text text-zinc-400">
+                    <p
+                        className="medium-text highlight-green rounded-full border border-black
+                         px-2 font-mono font-black opacity-80 shadow-inner shadow-white lg:w-fit"
+                    >
                         Full Stack Developer
                     </p>
                     <h1 className="two-extra-large-text">
@@ -75,16 +76,10 @@ export default function HeroSection() {
         target: ref,
         offset: ["start start", "center center"],
     });
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 12]);
+    const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
-    const scrollYprocessSpring = useSpring(scrollYProgress, {
-        stiffness: 300,
-        damping: 40,
-    }) as MotionValue<number>;
-
-    const scale = useTransform(scrollYprocessSpring, [0, 1], [1, 12]);
-    const opacity = useTransform(scrollYprocessSpring, [0, 1], [1, 0]);
-
-    const imageX = useTransform(scrollYprocessSpring, [0, 1], [getWidth(), 0]);
+    const imageX = useTransform(scrollYProgress, [0, 1], [getWidth(), 0]);
     const imageXCalc = useMotionTemplate`max(0px, calc(${imageX}% + calc(${imageX}vw - 300px)))`;
 
     useMotionValueEvent(opacity, "change", (latest) => {
@@ -94,33 +89,40 @@ export default function HeroSection() {
          */
         latest === 0 ? setIsHidden(true) : setIsHidden(false);
     });
-
-    return (
-        <>
-            <div
-                ref={ref}
-                className={`relative z-10 h-[200vh] overflow-clip ${isHidden ? "pointer-events-none" : ""}`}
-            >
-                <motion.div
-                    style={{ scale, opacity: opacity }}
-                    transition={{ ease: "easeInOut" }}
-                    className="left-0 top-0 h-dvh
-                    origin-[50%_50%] lg:origin-[90%_40%]"
+    const _memoHeroSection = useMemo(() => {
+        return (
+            <>
+                <div
+                    ref={ref}
+                    className={`relative z-10 h-[200vh] overflow-clip ${isHidden ? "pointer-events-none" : ""}`}
                 >
-                    <div className="window-mask absolute -z-20 h-dvh w-full bg-zinc-900"></div>
-                    <div className="window-mask">
-                        <section className="grid-rows-13 mx-2 grid h-dvh md:mx-5 lg:mx-8">
-                            <Header className="row-span-1" />
-                            <main className="row-span-8 rounded-3xl bg-zinc-100 shadow-inner lg:row-span-9">
-                                <Hero />
-                            </main>
-                            <Footer className="row-span-4 lg:row-span-3" />
-                        </section>
-                    </div>
-                </motion.div>
-            </div>
+                    <motion.div
+                        style={{ scale, opacity: opacity }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 40,
+                            bounce: 200,
+                        }}
+                        className="left-0 top-0 h-dvh
+                        origin-[50%_50%] lg:origin-[90%_40%]"
+                    >
+                        <div className="window-mask absolute -z-20 h-dvh w-full bg-zinc-900"></div>
+                        <div className="window-mask">
+                            <section className="mx-2 grid h-dvh grid-rows-13 md:mx-5 lg:mx-8">
+                                <Header className="row-span-1" />
+                                <main className="cube-grid row-span-8 rounded-3xl bg-zinc-100 shadow-inner lg:row-span-9">
+                                    <Hero />
+                                </main>
+                                <Footer className="row-span-4 lg:row-span-3" />
+                            </section>
+                        </div>
+                    </motion.div>
+                </div>
 
-            <AboutPage imageXCalc={imageXCalc} />
-        </>
-    );
+                <AboutPage imageXCalc={imageXCalc} />
+            </>
+        );
+    }, [imageXCalc, isHidden, opacity, scale]);
+    return _memoHeroSection;
 }

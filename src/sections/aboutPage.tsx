@@ -19,39 +19,26 @@ export default function AboutPage({ imageXCalc }: AboutPageInterface) {
         offset: [getOffset(), "center center"],
     });
     return (
-        <>
-            <section
-                ref={banner}
-                className="mt-[-200vh] h-fit overflow-clip bg-zinc-900 md:h-[200vh]"
-            >
-                <motion.span
-                    style={{ x: imageXCalc }}
-                    className="sticky mx-auto mt-[50vh] block w-full
+        <section
+            ref={banner}
+            className="cube-grid mt-[-200vh] h-fit overflow-clip bg-zinc-900 md:h-[200vh]"
+        >
+            <motion.span
+                style={{ x: imageXCalc }}
+                className="sticky mx-auto mt-[50vh] block w-full
                     rounded-3xl p-5 md:top-1/4 md:mt-[50vh]
                     lg:top-[20%] lg:mt-[0vh] lg:max-w-6xl"
-                >
-                    <h1 className="extra-large-text font-serif text-white">
-                        <AnimatedHeader
-                            sentence={"My Coding Odyssey"}
-                            scrollY={scrollYProgress}
-                        />
-                    </h1>
-                    <div className="medium-text my-2 font-serif text-zinc-100 lg:my-5">
-                        <AboutSectionText scrollYProgress={scrollYProgress} />
-                        {/* // TODO Below does not works as it causes the hone website to slow down.... */}
-                        {/* <AnimatedHeader
-                            sentence={AboutSectionText}
-                            scrollY={scrollYProgress}
-                        /> */}
-                    </div>
-                </motion.span>
-            </section>
-            <div className="space-y-[80px] overflow-clip bg-lime-200 text-7xl md:text-[300px]">
-                <p>Some more content</p>
-                <p>So there's</p>
-                <p>Some room</p>
-                <p>To scroll...</p>
-            </div>
-        </>
+            >
+                <h1 className="extra-large-text font-black uppercase text-white">
+                    <AnimatedHeader
+                        sentence={"My Coding Odyssey"}
+                        scrollY={scrollYProgress}
+                    />
+                </h1>
+                <div className="body-text my-2 font-mono text-zinc-100 lg:my-5">
+                    <AboutSectionText scrollYProgress={scrollYProgress} />
+                </div>
+            </motion.span>
+        </section>
     );
 }

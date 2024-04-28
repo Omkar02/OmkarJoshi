@@ -4,12 +4,24 @@ export default {
 
     theme: {
         extend: {
+            animation: {
+                "infinite-scroll": "infinite-scroll 20s linear infinite",
+            },
+            keyframes: {
+                "infinite-scroll": {
+                    from: { transform: "translateX(0)" },
+                    to: { transform: "translateX(-100%)" },
+                },
+            },
             fontFamily: {
                 zenDots: ["zenDots", "sans-serif"],
             },
             gridTemplateRows: {
                 // Simple 16 row grid
                 13: "repeat(13, minmax(0, 1fr))",
+            },
+            screens: {
+                se: "390px",
             },
         },
     },
